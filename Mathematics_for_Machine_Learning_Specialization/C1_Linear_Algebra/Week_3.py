@@ -1,5 +1,5 @@
 # GRADED FUNCTION
-#%%
+# %%
 import numpy as np
 
 # Our function will go through the matrix replacing each row in order turning it into echelon form.
@@ -56,7 +56,7 @@ def fixRowZero(A):
 
 
 def fixRowOne(A):
-    A[1] = A[1] - A[1, 0] * A[0]
+    A[1] = A[1] - A[1, 0] * A[0]  # A1 = A1 - A10*A0
     if A[1, 1] == 0:
         A[1] = A[1] + A[2]
         A[1] = A[1] - A[1, 0] * A[0]
@@ -104,7 +104,7 @@ def fixRowThree(A):
 
 # Test Code
 
-#%%
+# %%
 A = np.array([
     [2, 0, 0, 0],
     [0, 3, 0, 0],
@@ -114,7 +114,7 @@ A = np.array([
 isSingular(A)
 
 
-#%%A = np.array([
+# %%A = np.array([
         [0, 7, -5, 3],
         [2, 8, 0, 4],
         [3, 12, 0, 5],
@@ -122,11 +122,10 @@ isSingular(A)
     ], dtype=np.float_)
 fixRowZero(A)
 
-#%%
+# %%
 fixRowOne(A)
 
-#%%
+# %%
 fixRowTwo(A)
 
-#%%
-fixRowTwo(A)
+# %%
