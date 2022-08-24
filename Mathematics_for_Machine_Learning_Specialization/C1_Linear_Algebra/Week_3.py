@@ -124,12 +124,13 @@ A = np.array([
 isSingular(A)
 
 
-# %%A = np.array([
-        [0, 7, -5, 3],
-        [2, 8, 0, 4],
-        [3, 12, 0, 5],
-        [1, 3, 1, 3]
-    ], dtype=np.float_)
+# %%
+A = np.array([
+    [0, 7, -5, 3],
+    [2, 8, 0, 4],
+    [3, 12, 0, 5],
+    [1, 3, 1, 3]
+], dtype=np.float_)
 fixRowZero(A)
 
 # %%
