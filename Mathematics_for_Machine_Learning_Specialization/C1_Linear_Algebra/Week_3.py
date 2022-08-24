@@ -58,14 +58,15 @@ def fixRowZero(A):
 
 
 def fixRowOne(A):
-    A[1] = A[1] - A[1, 0] * A[0]  # A1 = A1 - A10*A0
+    A[1] = A[1] - A[1, 0] * A[0]  # A1 = A1 - A10*A0 # this makes a10 = 0
     if A[1, 1] == 0:
-        A[1] = A[1] + A[2]
-        A[1] = A[1] - A[1, 0] * A[0]
+        A[1] = A[1] + A[2]  # add the below row so a11 can be non zero
+        A[1] = A[1] - A[1, 0] * A[0]  # make a11 = 1
     if A[1, 1] == 0:
-        A[1] = A[1] + A[3]
-        A[1] = A[1] - A[1, 0] * A[0]
+        A[1] = A[1] + A[3]  # a11 still 0, add the third row to make it non zero
+        A[1] = A[1] - A[1, 0] * A[0]  # make a11 = 1
     if A[1, 1] == 0:
+        # a11 still zero after trying all below rows means matrix is singular
         raise MatrixIsSingular()
     A[1] = A[1] / A[1, 1]
     return A
@@ -76,6 +77,8 @@ def fixRowOne(A):
 
 def fixRowTwo(A):
     # Insert code below to set the sub-diagonal elements of row two to zero (there are two of them).
+    A[2] = A[2] - A[2, 0] * A[0]  # this makes a20 = 0
+    A[2] = A[2] - A[2, 1] * A[1]   # this makes a21 = 0
 
     # Next we'll test that the diagonal element is not zero.
     if A[2, 2] == 0:
