@@ -140,3 +140,4 @@ fixRowOne(A)
 fixRowTwo(A)
 
 # %%
+fixRowThree(A)
