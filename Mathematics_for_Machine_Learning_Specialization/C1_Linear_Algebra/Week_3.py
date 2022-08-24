@@ -91,6 +91,7 @@ def fixRowTwo(A):
     if A[2, 2] == 0:
         raise MatrixIsSingular()
     # Finally set the diagonal element to one by dividing the whole row by that element.
+    A[2] = A[2] / A[2, 2]
 
     return A
 
@@ -108,6 +109,7 @@ def fixRowThree(A):
     if A[3, 3] == 0:
         raise MatrixIsSingular()
     # Transform the row to set the diagonal element to one.
+    A[3] = A[3] / A[3, 3]
 
     return A
 
@@ -141,3 +143,5 @@ fixRowTwo(A)
 
 # %%
 fixRowThree(A)
+
+# %%
