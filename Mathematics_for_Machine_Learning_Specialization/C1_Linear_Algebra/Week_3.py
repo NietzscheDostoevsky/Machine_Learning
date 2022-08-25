@@ -109,7 +109,7 @@ def fixRowThree(A):
     if A[3, 3] == 0:
         raise MatrixIsSingular()
     # Transform the row to set the diagonal element to one.
-    A[3] = A[3] / A[3, 3]
+    A[3] = A[3] / A[3, 3]  # added this
 
     return A
 
