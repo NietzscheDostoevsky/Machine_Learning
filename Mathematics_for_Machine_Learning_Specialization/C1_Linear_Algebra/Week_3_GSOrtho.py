@@ -100,3 +100,14 @@ A = np.array([[3, 2, 3],
               [2, 4, 8],
               [12, 2, 1]], dtype=np.float_)
 gsBasis(A)
+
+# %%
+dimensions(A)
+
+# %%
+B = np.array([[6, 2, 1, 7, 5],
+              [2, 8, 5, -4, 1],
+              [1, -6, 3, 2, 8]], dtype=np.float_)
+gsBasis(B)
+# %%
+dimensions(B)
