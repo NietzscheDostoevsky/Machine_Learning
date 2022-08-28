@@ -1,3 +1,6 @@
+# https://www.coursera.org/learn/linear-algebra-machine-learning/ungradedLab/hNReS/gram-schmidt-process/lab?path=%2Fnotebooks%2FGramSchmidtProcess.ipynb
+
+
 # %%
 # GRADED FUNCTION
 import numpy as np
