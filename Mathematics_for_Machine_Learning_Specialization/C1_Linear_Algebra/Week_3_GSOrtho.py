@@ -23,7 +23,9 @@ def gsBasis4(A):
     # All that needs to be done is to normalise it. I.e. divide by its modulus, or norm.
     B[:, 0] = B[:, 0] / la.norm(B[:, 0])
     # For the first column, we need to subtract any overlap with our new zeroth vector.
+
     B[:, 1] = B[:, 1] - B[:, 1] @ B[:, 0] * B[:, 0]
+
     # If there's anything left after that subtraction, then B[:, 1] is linearly independant of B[:, 0]
     # If this is the case, we can normalise it. Otherwise we'll set that vector to zero.
     if la.norm(B[:, 1]) > verySmallNumber:
