@@ -74,3 +74,9 @@ def dimensions(A):
 
 
 # %%
+# Test 1
+V = np.array([[1, 0, 2, 6],
+              [0, 1, 8, 2],
+              [2, 8, 3, 1],
+              [1, -6, 2, 3]], dtype=np.float_)
+gsBasis4(V)
