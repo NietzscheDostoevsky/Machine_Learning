@@ -79,7 +79,7 @@ def gsBasis(A):
             # Complete the code to subtract the overlap with previous vectors.
             # you'll need the current vector B[:, i] and a previous vector B[:, j]
             B[:, i] = B[:, i] - B[:, i]   @  B[:, j] * B[:, j]
-            # B[:, 1] = B[:, 1] - B[:, 1] @ B[:, 0] * B[:, 0]
+
         # Next insert code to do the normalisation test for B[:, i]
         if la.norm(B[:, i]) > verySmallNumber:
             B[:, i] = B[:, i] / la.norm(B[:, i])
