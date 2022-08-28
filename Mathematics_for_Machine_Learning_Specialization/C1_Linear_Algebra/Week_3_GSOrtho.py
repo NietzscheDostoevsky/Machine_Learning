@@ -72,6 +72,11 @@ def gsBasis4(A):
 def gsBasis(A):
     # Make B as a copy of A, since we're going to alter it's values.
     B = np.array(A, dtype=np.float_)
+
+    # The exception for the very first vector is handled by the range function in j loop
+    # Since Range 0 would simply skip over
+    # and the function would simply go to the if bloclk
+    # and just normalize to get first bector
     # Loop over all vectors, starting with zero, label them with i
     for i in range(B.shape[1]):  # B.shape[1] gives the no of columns
         # Inside that loop, loop over all previous vectors, j, to subtract.
