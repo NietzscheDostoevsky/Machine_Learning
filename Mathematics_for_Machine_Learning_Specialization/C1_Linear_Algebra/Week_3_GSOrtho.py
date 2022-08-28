@@ -92,3 +92,11 @@ gsBasis4(U)
 # %%
 # Try the general function too.
 gsBasis(V)
+
+# %%
+# See what happens for non-square matrices
+A = np.array([[3, 2, 3],
+              [2, 5, -1],
+              [2, 4, 8],
+              [12, 2, 1]], dtype=np.float_)
+gsBasis(A)
