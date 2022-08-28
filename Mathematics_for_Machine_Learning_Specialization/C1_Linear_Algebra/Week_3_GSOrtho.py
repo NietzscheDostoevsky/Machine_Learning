@@ -80,3 +80,11 @@ V = np.array([[1, 0, 2, 6],
               [2, 8, 3, 1],
               [1, -6, 2, 3]], dtype=np.float_)
 gsBasis4(V)
+
+# %%
+# test 2
+
+# Once you've done Gram-Schmidt once,
+# doing it again should give you the same result. Test this:
+U = gsBasis4(V)
+gsBasis4(U)
