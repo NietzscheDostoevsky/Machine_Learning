@@ -111,3 +111,13 @@ B = np.array([[6, 2, 1, 7, 5],
 gsBasis(B)
 # %%
 dimensions(B)
+
+# %%
+# Now let's see what happens when we have one vector that is a linear combination of the others.
+C = np.array([[1, 0, 2],
+              [0, 1, -3],
+              [1, 0, 2]], dtype=np.float_)
+gsBasis(C)
+
+# %%
+dimensions(C)
