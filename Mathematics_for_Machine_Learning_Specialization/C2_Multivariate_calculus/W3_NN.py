@@ -18,10 +18,13 @@ def a1(a0, w1, b1):
 w_b = [(10, 0), (0, 5), (3, 1), (-3, 0), (-5, 5)]
 
 for w, b in w_b:
-    print(w, b)
+    print("w : ", w, "b : ", b)
     for i in range(2):
-        print("a1 : ", i)
-        print("w : ", w, "b : ", b)
-        print(a1(i, w, b))
-        print("-----------")
-        print("\n")
+        out = (a1(i, w, b))
+        #print("w : ", w, "b : ", b)
+        print("in: ", i, "  " "out:",  out)
+        #print(a1(i, w, b))
+        #b = i != out
+        # print(b)
+    print("-----------")
+    # print("\n")
