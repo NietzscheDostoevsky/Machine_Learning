@@ -1,5 +1,6 @@
 # Ques 2 : https://www.coursera.org/learn/multivariate-calculus-machine-learning/quiz/vV8Og/simple-artificial-neural-networks/attempt
 
+import numpy as np
 # First set up the network.
 sigma = np.tanh
 W = np.array([[-2, 4, -1], [6, 0, -3]])
