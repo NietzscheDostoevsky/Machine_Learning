@@ -1,6 +1,7 @@
 # Simple Artificial Neural Networks _ Coursera
 
 # First we set the state of the network
+import numpy as np
 σ = np.tanh
 w1 = 1.3
 b1 = -0.1
