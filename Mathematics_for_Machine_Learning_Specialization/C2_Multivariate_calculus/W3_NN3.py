@@ -1,6 +1,7 @@
-# First we set the state of the network
-
+# link : https://www.coursera.org/learn/multivariate-calculus-machine-learning/quiz/NrGhK/training-neural-networks/attempt?redirectToCover=true
+# ques 1
 import numpy as np
+# First we set the state of the network
 
 σ = np.tanh
 w1 = 1.3
@@ -16,4 +17,7 @@ def a1(a0):
 
 # Experiment with different values of x below.
 x = 0
-a1(x)
+y = a1(x)
+print(a1(x))
+cost = (y - 1)**2
+print(cost)
