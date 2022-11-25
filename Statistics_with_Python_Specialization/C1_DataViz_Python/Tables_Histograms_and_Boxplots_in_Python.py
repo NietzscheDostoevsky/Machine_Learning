@@ -64,8 +64,8 @@ plt.show()
 
 
 # Plot a histogram of both the total bill and the tips'
-sns.distplot(tips_data["total_bill"], kde=False)
-sns.distplot(tips_data["tip"], kde=False).set_title(
+sns.distplot(tips_data["total_bill"], kde=True)
+sns.distplot(tips_data["tip"], kde=True).set_title(
     "Histogram of Both Tip Size and Total Bill")
 plt.show()
 
@@ -110,6 +110,10 @@ plt.show()
 sns.boxplot(x=tips_data["tip"], y=tips_data["smoker"])
 plt.show()
 
+
+# %%
+sns.boxplot(x=tips_data["tip"], y=tips_data["sex"])
+plt.show()
 
 # In[ ]:
 
