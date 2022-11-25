@@ -155,3 +155,5 @@ g = g.map(plt.hist, "tip")
 plt.show()
 
 # %%
+
+# So if you wanna earn more, wait tables on Sat to non-smoker tables
