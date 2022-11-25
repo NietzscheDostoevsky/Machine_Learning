@@ -47,7 +47,7 @@ tips_data.describe()
 
 
 # Plot a histogram of the total bill
-sns.distplot(tips_data["total_bill"], kde=False).set_title(
+sns.distplot(tips_data["total_bill"], kde=True).set_title(
     "Histogram of Total Bill")
 plt.show()
 
@@ -56,7 +56,7 @@ plt.show()
 
 
 # Plot a histogram of the Tips only
-sns.distplot(tips_data["tip"], kde=False).set_title("Histogram of Total Tip")
+sns.distplot(tips_data["tip"], kde=True).set_title("Histogram of Total Tip")
 plt.show()
 
 
