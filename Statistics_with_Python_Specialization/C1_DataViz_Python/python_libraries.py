@@ -33,6 +33,7 @@
 # In[ ]:
 
 
+from pylab import *
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -243,7 +244,6 @@ print(stats.norm.rvs(size=10))
 
 
 # In[ ]:
-
 
 # Create some test data
 dx = .01
