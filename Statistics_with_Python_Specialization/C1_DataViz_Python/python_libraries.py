@@ -267,7 +267,7 @@ show()
 
 
 # Compute the Normal CDF of certain values.
-print(stats.norm.cdf(np.array([1, -1., 0, 1, 3, 4, -2, 6])))
+print(stats.norm.cdf(np.array([1, -1., 0, 1, 3, 4, -2, 9])))
 
 
 # #### Descriptive Statistics
