@@ -147,3 +147,11 @@ g = g.map(plt.hist, "tip")
 plt.show()
 
 # %%
+# Create a boxplot and histogram of the tips grouped by time of day and smoker
+sns.boxplot(x=tips_data["tip"], y=tips_data["time"])
+
+g = sns.FacetGrid(tips_data, row="time", col="smoker")
+g = g.map(plt.hist, "tip")
+plt.show()
+
+# %%
