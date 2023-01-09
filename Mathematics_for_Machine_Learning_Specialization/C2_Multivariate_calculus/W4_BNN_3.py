@@ -20,9 +20,12 @@ def a1(a0):
 
 
 # Next, if a training example is,
-x = np.array([0.1, 0.5, 0.6])
-y = np.array([0.25, 0.75])
+#x = np.array([0.1, 0.5, 0.6])
+#y = np.array([0.25, 0.75])
+x = np.array([0.7, 0.6, 0.2])
+y = np.array([0.9, 0.6])
 
 # Then the cost function is,
 d = a1(x) - y  # Vector difference between observed and expected activation
 C = d @ d  # Absolute value squared of the difference.
+print(C)
