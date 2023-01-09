@@ -40,7 +40,7 @@ def dCdb(w1, b1, x, y):
     dadz = 1/np.cosh(z)**2
     """ Change the next line to give the derivative of
       the weighted sum, z, with respect to the bias, b. """
-    dzdb = ???
+    dzdb = 1
     return dCda * dadz * dzdb
 
 
