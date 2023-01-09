@@ -1,3 +1,4 @@
+import numpy as np
 # Define the activation function.
 sigma = np.tanh
 
