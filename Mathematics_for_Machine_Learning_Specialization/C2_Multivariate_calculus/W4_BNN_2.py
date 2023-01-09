@@ -1,4 +1,6 @@
 # First define our sigma function.
+import numpy as np
+
 sigma = np.tanh
 
 # Next define the feed-forward equation.
