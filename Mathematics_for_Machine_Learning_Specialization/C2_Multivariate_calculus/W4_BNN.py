@@ -11,14 +11,13 @@ def a1(a0):
     z = w1 * a0 + b1
     return σ(z)
 
-# Set y here
-
-
-y = 0
-
 # Experiment with different values of x below.
-x = 0
+
+
+x = 1
+y = 0
 a1(x)
 
 # Cost function
-c_k = (a1(x) - y) ^ 2
+c_k = np.square((a1(x) - y))
+print(c_k)
