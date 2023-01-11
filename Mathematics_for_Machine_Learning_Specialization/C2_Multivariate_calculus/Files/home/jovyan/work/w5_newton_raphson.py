@@ -2,19 +2,20 @@
 
 from scipy import optimize
 import pandas as pd
+import numpy as np
 
 
 def f(x):
-    return x**6/6 - 3*x**4 - 2*x**3/3 + 27*x**2/2 + 18*x - 30
+    return np.sin(x)
 
 
 def d_f(x):
-    return x**5 - 12*x**3 - 2*x**2 + 27*x + 18
+    return np.cos(x)
 
 
 # %%
 d.clear()
-x = 1.99
+x = 14.0
 
 d = {"x": [x], "f(x)": [f(x)], "d_f(x)": [d_f(x)]}
 # %%
@@ -30,10 +31,10 @@ pd.DataFrame(d, columns=['x', 'f(x)', 'd_f(x)'])
 
 
 def f(x):
-    return x**6/6 - 3*x**4 - 2*x**3/3 + 27*x**2/2 + 18*x - 30
+    return np.sin(x)
 
 
-x0 = -5
+x0 = 14.0
 optimize.newton(f, x0)
 
 # %%
