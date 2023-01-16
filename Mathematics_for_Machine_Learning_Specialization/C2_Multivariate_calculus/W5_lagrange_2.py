@@ -5,7 +5,7 @@ import numpy as np
 
 
 def f(x, y):
-    return (np.exp(-(x - y**2 + x*y)))
+    return -(np.exp(x - y**2 + x*y))
 
 
 def g(x, y):
@@ -49,6 +49,7 @@ print("x = %g" % x)
 print("y = %g" % y)
 print("λ = %g" % λ)
 print("f(x, y) = %g" % f(x, y))
+print(g(x, y))
 
 # %%
 # You should be able to use the code find the other roots of the system.
