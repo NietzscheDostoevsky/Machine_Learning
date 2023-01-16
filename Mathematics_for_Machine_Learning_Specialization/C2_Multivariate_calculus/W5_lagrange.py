@@ -49,3 +49,5 @@ print("x = %g" % x)
 print("y = %g" % y)
 print("λ = %g" % λ)
 print("f(x, y) = %g" % f(x, y))
+
+# %%
