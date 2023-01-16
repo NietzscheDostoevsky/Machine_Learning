@@ -18,7 +18,7 @@ def dfdy(x, y):
 
 
 def dgdx(x, y):
-    return ???
+    return 2 * x
 
 
 def dgdy(x, y):
