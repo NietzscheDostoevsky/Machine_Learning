@@ -1,4 +1,5 @@
 # Here the function is defined
+from scipy import stats
 import numpy as np
 
 
@@ -22,3 +23,11 @@ def linfit(xdat, ydat):
 
 # Produce the plot - don't put this in the next code block
 line()
+
+# Scipy
+
+
+# Use the stats.linregress() method to evaluate regression
+regression = stats.linregress(xdat, ydat)
+
+line(regression)
