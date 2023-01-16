@@ -61,7 +61,7 @@ for i, j in zip(range(-10, 10), range(-10, 10)):
     x, y, λ = optimize.root(DL, [x0, y0, λ0]).x
     f_values = round(f(x, y), 4)
     if f_values in f_xy:
-        continue
+        continue  # no need for further execution
     else:
         f_xy.append(f_values)
     print("x = %g" % x)
