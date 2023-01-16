@@ -19,15 +19,15 @@ def dfdx(x, y):
 
 
 def dfdy(x, y):
-    return (x-2y) * f(x, y)
+    return (x - 2*y) * f(x, y)
 
 
 def dgdx(x, y):
-    return 2 * x
+    return 1
 
 
 def dgdy(x, y):
-    return (6 * y) + 6
+    return np.sinh(y)
 
 
 # Solving
