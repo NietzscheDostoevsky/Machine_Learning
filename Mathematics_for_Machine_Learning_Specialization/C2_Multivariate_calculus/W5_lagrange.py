@@ -22,4 +22,4 @@ def dgdx(x, y):
 
 
 def dgdy(x, y):
-    return ???
+    return (6 * y) + 6
