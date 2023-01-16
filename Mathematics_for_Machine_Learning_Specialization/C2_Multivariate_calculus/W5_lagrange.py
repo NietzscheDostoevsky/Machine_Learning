@@ -1,4 +1,9 @@
+# %%
 # First we define the functions,
+from scipy import optimize
+import numpy as np
+
+
 def f(x, y):
     return np.exp(-(2*x*x + y*y - x*y) / 2)
 
@@ -23,3 +28,24 @@ def dgdx(x, y):
 
 def dgdy(x, y):
     return (6 * y) + 6
+
+
+# Solving
+
+# %%
+def DL(xyλ):
+    [x, y, λ] = xyλ
+    return np.array([
+        dfdx(x, y) - λ * dgdx(x, y),
+        dfdy(x, y) - λ * dgdy(x, y),
+        - g(x, y)
+    ])
+
+
+# %%
+(x0, y0, λ0) = (-1, -1, 0)
+x, y, λ = optimize.root(DL, [x0, y0, λ0]).x
+print("x = %g" % x)
+print("y = %g" % y)
+print("λ = %g" % λ)
+print("f(x, y) = %g" % f(x, y))
