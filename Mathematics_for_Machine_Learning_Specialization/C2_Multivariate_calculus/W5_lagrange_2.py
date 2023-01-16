@@ -49,7 +49,7 @@ print("x = %g" % x)
 print("y = %g" % y)
 print("λ = %g" % λ)
 print("f(x, y) = %g" % f(x, y))
-print(g(x, y))
+print(round(g(x, y)))
 
 # %%
 # You should be able to use the code find the other roots of the system.
@@ -69,6 +69,7 @@ for i, j in zip(range(-10, 10), range(-10, 10)):
     print("y = %g" % y)
     print("λ = %g" % λ)
     print("f(x, y) = %g" % f(x, y))
+    print(round(g(x, y)))
     print("--------------")
 print(f_xy)
 
