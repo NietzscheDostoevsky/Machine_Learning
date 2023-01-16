@@ -51,3 +51,25 @@ print("λ = %g" % λ)
 print("f(x, y) = %g" % f(x, y))
 
 # %%
+# You should be able to use the code find the other roots of the system.
+
+# Re-use the code above with different starting values to find the other stationary points on the constraint.
+f_xy = list()
+for i, j in zip(range(-10, 10), range(-10, 10)):
+
+    (x0, y0, λ0) = (i, j, 0)
+    x, y, λ = optimize.root(DL, [x0, y0, λ0]).x
+    f_values = round(f(x, y), 4)
+    if f_values in f_xy:
+        continue
+    else:
+        f_xy.append(f_values)
+    print("x = %g" % x)
+    print("y = %g" % y)
+    print("λ = %g" % λ)
+    print("f(x, y) = %g" % f(x, y))
+    print("--------------")
+print(f_xy)
+
+
+# %%
