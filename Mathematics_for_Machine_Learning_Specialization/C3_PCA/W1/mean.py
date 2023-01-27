@@ -18,7 +18,7 @@ a1 = np.array([1, 2, 3])
 a2 = np.array([3, 4, 5])
 a3 = np.array([5, 3, 1])
 
-b = np.array([1,2,3])
+b = np.array([1, 2, 3])
 a1 = a1 + b
 a2 = a2 + b
 a3 = a3 + b
@@ -26,9 +26,15 @@ a3 = a3 + b
 (a1+a2+a3)/3
 
 # %%
-d = np.array([1,2,3,2])
+d = np.array([1, 2, 3, 2])
 np.var(d)
 np.std(d)
 d1 = d + 1
+print(np.var(d1))
+print(np.std(d1))
+
+d2 = d*2
+print(np.var(d2))
+print(np.std(d2))
 
 # %%
