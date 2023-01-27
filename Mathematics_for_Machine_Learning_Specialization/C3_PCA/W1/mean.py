@@ -26,3 +26,9 @@ a3 = a3 + b
 (a1+a2+a3)/3
 
 # %%
+d = np.array([1,2,3,2])
+np.var(d)
+np.std(d)
+d1 = d + 1
+
+# %%
