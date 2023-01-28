@@ -170,9 +170,9 @@ def mean(X):
     """
     # YOUR CODE HERE
     # Uncomment and edit the code below
-    # N, D = X.shape
-    # m = np.zeros((D,))
-    # return m
+    N, D = X.shape
+    m = np.zeros((D,)) + np.mean(X, axis=0)
+    return m
 
 
 # In[ ]:
