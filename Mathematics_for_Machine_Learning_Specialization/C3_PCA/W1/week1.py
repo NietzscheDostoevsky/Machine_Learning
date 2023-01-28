@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Week 1: Mean/Covariance of a data set and effect of a linear transformation
-# 
+#
 # In this week, we are going to investigate how the mean and (co)variance of a dataset changes
 # when we apply affine transformation to the dataset.
 
@@ -19,37 +19,39 @@
 
 
 # PACKAGE: DO NOT EDIT
+from numpy.testing import assert_allclose
+from ipywidgets import interact
+import timeit
+import time
+from sklearn.datasets import fetch_olivetti_faces
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 matplotlib.style.use('fivethirtyeight')
-from sklearn.datasets import fetch_olivetti_faces
-import time
-import timeit
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # Next, we are going to retrieve Olivetti faces dataset.
-# 
+#
 # When working with some datasets, before digging into further analysis, it is almost always
 # useful to do a few things to understand your dataset. First of all, answer the following
 # set of questions:
-# 
+#
 # 1. What is the size of your dataset?
 # 2. What is the dimensionality of your data?
-# 
+#
 # The dataset we have are usually stored as 2D matrices, then it would be really important
 # to know which dimension represents the dimension of the dataset, and which represents
-# the data points in the dataset. 
-# 
+# the data points in the dataset.
+#
 # __When you implement the functions for your assignment, make sure you read
-# the docstring for what each dimension of your inputs represents the data points, and which 
+# the docstring for what each dimension of your inputs represents the data points, and which
 # represents the dimensions of the dataset!__
 
 # In[2]:
 
 
-## PLEASE DO NOT EDIT THIS CELL
+# PLEASE DO NOT EDIT THIS CELL
 
 image_shape = (64, 64)
 # Load faces data
@@ -61,22 +63,20 @@ print('{} data points'.format(faces.shape[0]))
 
 
 # When your dataset are images, it's a really good idea to see what they look like.
-# 
+#
 # One very
 # convenient tool in Jupyter is the `interact` widget, which we use to visualize the images (faces). For more information on how to use interact, have a look at the documentation [here](http://ipywidgets.readthedocs.io/en/stable/examples/Using%20Interact.html).
 
 # In[3]:
 
 
-## PLEASE DO NOT EDIT THIS CELL
-
-from ipywidgets import interact
+# PLEASE DO NOT EDIT THIS CELL
 
 
 # In[4]:
 
 
-## PLEASE DO NOT EDIT THIS CELL
+# PLEASE DO NOT EDIT THIS CELL
 
 def show_face(face):
     plt.figure()
@@ -87,7 +87,7 @@ def show_face(face):
 # In[5]:
 
 
-## PLEASE DO NOT EDIT THIS CELL
+# PLEASE DO NOT EDIT THIS CELL
 
 @interact(n=(0, len(faces)-1))
 def display_faces(n=0):
@@ -104,9 +104,11 @@ def display_faces(n=0):
 
 
 # GRADED FUNCTION: DO NOT EDIT THIS LINE
+# GRADED FUNCTION: DO NOT EDIT THIS LINE
+# GRADED FUNCTION: DO NOT EDIT THIS LINE
 def mean_naive(X):
     """Compute the sample mean for a dataset by iterating over the dataset.
-    
+
     Args:
         X: `ndarray` of shape (N, D) representing the dataset. N 
         is the size of the dataset (the number of data points) 
@@ -115,35 +117,39 @@ def mean_naive(X):
         mean: `ndarray` of shape (D, ), the sample mean of the dataset `X`.
     """
     # YOUR CODE HERE
-    ### Uncomment and edit the code below
-#     iterate over the dataset and compute the mean vector.
-    mean = np.zeros((X.shape[1])
-        for n in range(X.shape[0]):
+    # Uncomment and edit the code below
+    # iterate over the dataset and compute the mean vector.
+    mean = np.zeros(X.shape[1])
+    for n in range(X.shape[0]):
+        mean = mean + X[n]
+    mean = mean / X.shape[0]
 
     return mean
 
 
+X = np.array([[0., 1., 1.],
+              [1., 2., 1.]])
+mean_naive(X)
 # In[ ]:
 
 
-## PLEASE DO NOT EDIT THIS CELL
+# PLEASE DO NOT EDIT THIS CELL
 
-from numpy.testing import assert_allclose
 
 # Test case 1
-X = np.array([[0., 1., 1.], 
+X = np.array([[0., 1., 1.],
               [1., 2., 1.]])
 expected_mean = np.array([0.5, 1.5, 1.])
 assert_allclose(mean_naive(X), expected_mean, rtol=1e-5)
 
 # Test case 2
-X = np.array([[0., 1., 0.], 
+X = np.array([[0., 1., 0.],
               [2., 3., 1.]])
 expected_mean = np.array([1., 2., 0.5])
 assert_allclose(mean_naive(X), expected_mean, rtol=1e-5)
 
 # Test covariance is zero
-X = np.array([[0., 1.], 
+X = np.array([[0., 1.],
               [0., 1.]])
 expected_mean = np.array([0., 1.])
 assert_allclose(mean_naive(X), expected_mean, rtol=1e-5)
@@ -155,7 +161,7 @@ assert_allclose(mean_naive(X), expected_mean, rtol=1e-5)
 # GRADED FUNCTION: DO NOT EDIT THIS LINE
 def mean(X):
     """Compute the sample mean for a dataset.
-    
+
     Args:
         X: `ndarray` of shape (N, D) representing the dataset.
         N is the size of the dataset (the number of data points) 
@@ -163,7 +169,7 @@ def mean(X):
         ndarray: ndarray with shape (D,), the sample mean of the dataset `X`.
     """
     # YOUR CODE HERE
-    ### Uncomment and edit the code below
+    # Uncomment and edit the code below
     # N, D = X.shape
     # m = np.zeros((D,))
     # return m
@@ -172,30 +178,29 @@ def mean(X):
 # In[ ]:
 
 
-## PLEASE DO NOT EDIT THIS CELL
+# PLEASE DO NOT EDIT THIS CELL
 
-from numpy.testing import assert_allclose
 
 # Test case 1
-X = np.array([[0., 1., 1.], 
+X = np.array([[0., 1., 1.],
               [1., 2., 1.]])
 expected_mean = np.array([0.5, 1.5, 1.])
 assert_allclose(mean(X), expected_mean, rtol=1e-5)
 
 # Test case 2
-X = np.array([[0., 1., 0.], 
+X = np.array([[0., 1., 0.],
               [2., 3., 1.]])
 expected_mean = np.array([1., 2., 0.5])
 assert_allclose(mean(X), expected_mean, rtol=1e-5)
 
 # Test covariance is zero
-X = np.array([[0., 1.], 
+X = np.array([[0., 1.],
               [0., 1.]])
 expected_mean = np.array([0., 1.])
 assert_allclose(mean(X), expected_mean, rtol=1e-5)
 
-### Some hidden tests below
-### ...
+# Some hidden tests below
+# ...
 
 
 # In[ ]:
@@ -204,7 +209,7 @@ assert_allclose(mean(X), expected_mean, rtol=1e-5)
 # GRADED FUNCTION: DO NOT EDIT THIS LINE
 def cov_naive(X):
     """Compute the sample covariance for a dataset by iterating over the dataset.
-    
+
     Args:
         X: `ndarray` of shape (N, D) representing the dataset. 
         N is the size of the dataset (the number of data points) 
@@ -213,12 +218,12 @@ def cov_naive(X):
         ndarray: ndarray with shape (D, D), the sample covariance of the dataset `X`.
     """
     # YOUR CODE HERE
-    ### Uncomment and edit the code below
+    # Uncomment and edit the code below
 #     N, D = X.shape
 #     ### Edit the code below to compute the covariance matrix by iterating over the dataset.
 #     covariance = np.zeros((D, D))
 #     ### Update covariance
-    
+
 #     ###
 #     return covariance
 
@@ -226,32 +231,31 @@ def cov_naive(X):
 # In[ ]:
 
 
-## PLEASE DO NOT EDIT THIS CELL
+# PLEASE DO NOT EDIT THIS CELL
 
-from numpy.testing import assert_allclose
 
 # Test case 1
-X = np.array([[0., 1.], 
+X = np.array([[0., 1.],
               [1., 2.],
-     [0., 1.], 
-     [1., 2.]])
+              [0., 1.],
+              [1., 2.]])
 expected_cov = np.array(
     [[0.25, 0.25],
-    [0.25, 0.25]])
+     [0.25, 0.25]])
 
 assert_allclose(cov_naive(X), expected_cov, rtol=1e-5)
 
 # Test case 2
-X = np.array([[0., 1.], 
+X = np.array([[0., 1.],
               [2., 3.]])
 expected_cov = np.array(
     [[1., 1.],
-    [1., 1.]])
+     [1., 1.]])
 
 assert_allclose(cov_naive(X), expected_cov, rtol=1e-5)
 
 # Test covariance is zero
-X = np.array([[0., 1.], 
+X = np.array([[0., 1.],
               [0., 1.],
               [0., 1.]])
 expected_cov = np.zeros((2, 2))
@@ -265,7 +269,7 @@ assert_allclose(cov_naive(X), expected_cov, rtol=1e-5)
 # GRADED FUNCTION: DO NOT EDIT THIS LINE
 def cov(X):
     """Compute the sample covariance for a dataset.
-    
+
     Args:
         X: `ndarray` of shape (N, D) representing the dataset.
         N is the size of the dataset (the number of data points) 
@@ -274,18 +278,18 @@ def cov(X):
         ndarray: ndarray with shape (D, D), the sample covariance of the dataset `X`.
     """
     # YOUR CODE HERE
-    
+
     # It is possible to vectorize our code for computing the covariance with matrix multiplications,
     # i.e., we do not need to explicitly
     # iterate over the entire dataset as looping in Python tends to be slow
     # We challenge you to give a vectorized implementation without using np.cov, but if you choose to use np.cov,
     # be sure to pass in bias=True.
-    ### Uncomment and edit the code below
+    # Uncomment and edit the code below
 #     N, D = X.shape
 #     ### Edit the code to compute the covariance matrix
 #     covariance_matrix = np.zeros((D, D))
 #     ### Update covariance_matrix here
-    
+
 #     ###
 #     return covariance_matrix
 
@@ -293,40 +297,39 @@ def cov(X):
 # In[ ]:
 
 
-## PLEASE DO NOT EDIT THIS CELL
+# PLEASE DO NOT EDIT THIS CELL
 
-from numpy.testing import assert_allclose
 
 # Test case 1
-X = np.array([[0., 1.], 
+X = np.array([[0., 1.],
               [1., 2.],
-     [0., 1.], 
-     [1., 2.]])
+              [0., 1.],
+              [1., 2.]])
 expected_cov = np.array(
     [[0.25, 0.25],
-    [0.25, 0.25]])
+     [0.25, 0.25]])
 
 assert_allclose(cov(X), expected_cov, rtol=1e-5)
 
 # Test case 2
-X = np.array([[0., 1.], 
+X = np.array([[0., 1.],
               [2., 3.]])
 expected_cov = np.array(
     [[1., 1.],
-    [1., 1.]])
+     [1., 1.]])
 
 assert_allclose(cov(X), expected_cov, rtol=1e-5)
 
 # Test covariance is zero
-X = np.array([[0., 1.], 
+X = np.array([[0., 1.],
               [0., 1.],
               [0., 1.]])
 expected_cov = np.zeros((2, 2))
 
 assert_allclose(cov(X), expected_cov, rtol=1e-5)
 
-### Some hidden tests below
-### ...
+# Some hidden tests below
+# ...
 
 
 # With the `mean` function implemented, let's take a look at the _mean_ face of our dataset!
@@ -334,12 +337,13 @@ assert_allclose(cov(X), expected_cov, rtol=1e-5)
 # In[ ]:
 
 
-## PLEASE DO NOT EDIT THIS CELL
+# PLEASE DO NOT EDIT THIS CELL
 
 def mean_face(faces):
     return faces.mean(axis=0).reshape((64, 64))
 
-plt.imshow(mean_face(faces), cmap='gray');
+
+plt.imshow(mean_face(faces), cmap='gray')
 
 
 # One of the advantage of writing vectorized code is speedup gained when working on larger dataset. Loops in Python
@@ -370,7 +374,7 @@ pass
 # ## 2. Affine Transformation of Dataset
 # In this week we are also going to verify a few properties about the mean and
 # covariance of affine transformation of random variables.
-# 
+#
 # Consider a data matrix $X$ of size (N, D). We would like to know
 # what is the covariance when we apply affine transformation $Ax_i + b$ for each datapoint $x_i$ in $X$. i.e.
 # we would like to know what happens to the mean and covariance for the new dataset if we apply affine transformation.
@@ -389,11 +393,11 @@ def affine_mean(mean, A, b):
         sample mean vector of shape (D,) after affine transformation.
     """
     # YOUR CODE HERE
-    ### Uncomment and edit the code below
+    # Uncomment and edit the code below
 #     ### Edit the code below to compute the mean vector after affine transformation
 #     affine_m = np.zeros(mean.shape) # affine_m has shape (D,)
 #     ### Update affine_m
-    
+
 #     ###
 #     return affine_m
 
@@ -404,20 +408,20 @@ def affine_mean(mean, A, b):
 # GRADED FUNCTION: DO NOT EDIT THIS LINE
 def affine_covariance(S, A, b):
     """Compute the covariance matrix after affine transformation
-    
+
     Args:
         S: `ndarray` of shape (D, D), the sample covariance matrix for some dataset.
         A, b: `ndarray` of shape (D, D) and (D,), affine transformation applied to x
-    
+
     Returns:
         the sample covariance matrix of shape (D, D) after the transformation
     """
     # YOUR CODE HERE
-    ### Uncomment and edit the code below
-    ### EDIT the code below to compute the covariance matrix after affine transformation
+    # Uncomment and edit the code below
+    # EDIT the code below to compute the covariance matrix after affine transformation
 #     affine_cov = np.zeros(S.shape) # affine_cov has shape (D, D)
 #     ### Update affine_cov
-    
+
 #     ###
 #     return affine_cov
 
@@ -425,31 +429,29 @@ def affine_covariance(S, A, b):
 # In[ ]:
 
 
-## PLEASE DO NOT EDIT THIS CELL
+# PLEASE DO NOT EDIT THIS CELL
 
-from numpy.testing import assert_allclose
 
 A = np.array([[0, 1], [2, 3]])
 b = np.ones(2)
 m = np.full((2,), 2)
 S = np.eye(2)*2
 
-expected_affine_mean = np.array([ 3., 11.])
+expected_affine_mean = np.array([3., 11.])
 expected_affine_cov = np.array(
-    [[ 2.,  6.],
-    [ 6., 26.]])
+    [[2.,  6.],
+     [6., 26.]])
 
 assert_allclose(affine_mean(m, A, b), expected_affine_mean, rtol=1e-4)
-### Some hidden tests below
-### ...
+# Some hidden tests below
+# ...
 
 
 # In[ ]:
 
 
-## PLEASE DO NOT EDIT THIS CELL
+# PLEASE DO NOT EDIT THIS CELL
 
-from numpy.testing import assert_allclose
 
 A = np.array([[0, 1], [2, 3]])
 b = np.ones(2)
@@ -457,14 +459,14 @@ m = np.full((2,), 2)
 S = np.eye(2)*2
 
 expected_affine_cov = np.array(
-    [[ 2.,  6.],
-    [ 6., 26.]])
+    [[2.,  6.],
+     [6., 26.]])
 
-assert_allclose(affine_covariance(S, A, b), 
+assert_allclose(affine_covariance(S, A, b),
                 expected_affine_cov, rtol=1e-4)
 
-### Some hidden tests below
-### ...
+# Some hidden tests below
+# ...
 
 
 # Once the two functions above are implemented, we can verify the correctness our implementation. Assuming that we have some $A$ and $b$.
@@ -473,7 +475,7 @@ assert_allclose(affine_covariance(S, A, b),
 
 
 random = np.random.RandomState(42)
-A = random.randn(4,4)
+A = random.randn(4, 4)
 b = random.randn(4)
 
 
@@ -486,24 +488,24 @@ X = random.randn(100, 4)
 
 
 # Assuming that for some dataset $X$, the mean and covariance are $m$, $S$, and for the new dataset after affine transformation $X'$, the mean and covariance are $m'$ and $S'$, then we would have the following identity:
-# 
+#
 # $$m' = \text{affine_mean}(m, A, b)$$
-# 
+#
 # $$S' = \text{affine_covariance}(S, A, b)$$
 
 # In[ ]:
 
 
 X1 = ((A @ (X.T)).T + b)  # applying affine transformation once
-X2 = ((A @ (X1.T)).T + b) # twice
+X2 = ((A @ (X1.T)).T + b)  # twice
 
 
 # One very useful way to compare whether arrays are equal/similar is use the helper functions
 # in `numpy.testing`.
-# 
+#
 # Check the Numpy [documentation](https://docs.scipy.org/doc/numpy-1.13.0/reference/routines.testing.html)
 # for details.
-# 
+#
 # If you are interested in learning more about floating point arithmetic, here is a good [paper](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.22.6768).
 
 # In[ ]:
@@ -521,7 +523,3 @@ np.testing.assert_allclose(cov(X2),  affine_covariance(cov(X1), A, b))
 
 
 # In[ ]:
-
-
-
-
