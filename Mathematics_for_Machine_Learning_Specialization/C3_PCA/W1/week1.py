@@ -440,7 +440,7 @@ def affine_covariance(S, A, b):
     # EDIT the code below to compute the covariance matrix after affine transformation
     affine_cov = np.zeros(S.shape)  # affine_cov has shape (D, D)
 #     ### Update affine_cov
-    affine_cov = (S @ A) @ (S.T)
+    affine_cov = (A @ S) @ (A.T)
 
 #     ###
     return affine_cov
