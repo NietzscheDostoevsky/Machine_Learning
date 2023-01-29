@@ -210,7 +210,7 @@ assert_allclose(mean(X), expected_mean, rtol=1e-5)
 # GRADED FUNCTION: DO NOT EDIT THIS LINE
 def cov_naive(X):
     """Compute the sample covariance for a dataset by iterating over the dataset.
-    
+
     Args:
         X: `ndarray` of shape (N, D) representing the dataset. 
         N is the size of the dataset (the number of data points) 
@@ -219,9 +219,9 @@ def cov_naive(X):
         ndarray: ndarray with shape (D, D), the sample covariance of the dataset `X`.
     """
     # YOUR CODE HERE
-    ### Uncomment and edit the code below
+    # Uncomment and edit the code below
     N, D = X.shape
-    ### Edit the code below to compute the covariance matrix by iterating over the dataset.
+    # Edit the code below to compute the covariance matrix by iterating over the dataset.
     covariance = np.zeros((D, D))
 #     ### Update covariance
     mu = mean(X)
@@ -275,6 +275,8 @@ assert_allclose(cov_naive(X), expected_cov, rtol=1e-5)
 
 
 # GRADED FUNCTION: DO NOT EDIT THIS LINE
+# GRADED FUNCTION: DO NOT EDIT THIS LINE
+# GRADED FUNCTION: DO NOT EDIT THIS LINE
 def cov(X):
     """Compute the sample covariance for a dataset.
 
@@ -295,11 +297,13 @@ def cov(X):
     # Uncomment and edit the code below
 #     N, D = X.shape
 #     ### Edit the code to compute the covariance matrix
-#     covariance_matrix = np.zeros((D, D))
+#    covariance_matrix = np.zeros((D, D))
 #     ### Update covariance_matrix here
+    # covariance_matrix = np.cov(X.T, bias = True) # this and the code below both would work
+    covariance_matrix = np.cov(X, rowvar=False,  bias=True)
 
 #     ###
-#     return covariance_matrix
+    return covariance_matrix
 
 
 # In[ ]:
