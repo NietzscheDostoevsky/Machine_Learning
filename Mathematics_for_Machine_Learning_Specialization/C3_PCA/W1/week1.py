@@ -396,6 +396,8 @@ pass
 
 # GRADED FUNCTION: DO NOT EDIT THIS LINE
 
+# GRADED FUNCTION: DO NOT EDIT THIS LINE
+
 def affine_mean(mean, A, b):
     """Compute the mean after affine transformation
     Args:
@@ -407,11 +409,16 @@ def affine_mean(mean, A, b):
     # YOUR CODE HERE
     # Uncomment and edit the code below
 #     ### Edit the code below to compute the mean vector after affine transformation
-#     affine_m = np.zeros(mean.shape) # affine_m has shape (D,)
+    affine_m = np.zeros(mean.shape)  # affine_m has shape (D,)
 #     ### Update affine_m
+    d = mean.shape[0]
+    mean = mean.reshape(d, -1)
+    affine_m = (A @ mean) + b
+    affine_m = affine_m[:, 1]
+    affine_m = affine_m.reshape(-1)
 
 #     ###
-#     return affine_m
+    return affine_m
 
 
 # In[ ]:
