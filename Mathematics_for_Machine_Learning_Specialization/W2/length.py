@@ -1,3 +1,5 @@
+
+
 import numpy as np
 
 
@@ -13,3 +15,5 @@ def length(x):
 
 
 print(length(np.array([1, 0])))
+
+# Always generalize the code
